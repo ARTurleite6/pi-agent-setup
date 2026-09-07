@@ -1,0 +1,31 @@
+{
+  "name": "artur-pi-agent-setup",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Reusable Pi coding-agent extensions, skills, prompts, theme, and working preferences",
+  "keywords": [
+    "pi-package",
+    "coding-agent",
+    "developer-tools"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "pi": {
+    "extensions": [
+      "./extensions/notify.ts",
+      "./extensions/vim-mode/index.ts"
+    ],
+    "skills": [
+      "./skills"
+    ],
+    "prompts": [
+      "./prompts"
+    ],
+    "themes": [
+      "./themes"
+    ]
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "theme": "gruvbox-dark-hard",
+  "tuiMode": "fullscreen",
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "markdown": {
+    "mermaid": "streaming"
+  },
+  "defaultProjectTrust": "ask",
+  "hideThinkingBlock": false,
+  "packages": [
+    "git:github.com/ARTurleite6/pi-agent-setup",
+    "npm:pi-web-access"
+  ]
+}

@@ -1,0 +1,11 @@
+node_modules/
+.DS_Store
+*.log
+
+# Pi state and sensitive machine-local data
+auth.json
+trust.json
+models-store.json
+sessions/
+usage-audits/
+bin/

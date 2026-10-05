@@ -1,9 +1,13 @@
 # Third-party notices
 
-## Pi notification example
+## Pi examples
 
 `extensions/notify.ts` is copied from the Pi coding-agent examples:
 <https://github.com/earendil-works/pi-mono/blob/main/packages/coding-agent/examples/extensions/notify.ts>
+
+`extensions/subagent/` is adapted from the Pi 1.0.2 subagent example:
+<https://github.com/earendil-works/pi-mono/tree/main/packages/coding-agent/examples/extensions/subagent>
+The header of `extensions/subagent/index.ts` lists the local changes.
 
 MIT License
 

@@ -16,6 +16,7 @@
   "pi": {
     "extensions": [
       "./extensions/notify.ts",
+      "./extensions/subagent/index.ts",
       "./extensions/vim-mode/index.ts"
     ],
     "skills": [

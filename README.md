@@ -5,6 +5,7 @@ Reusable configuration for the [Pi coding agent](https://github.com/earendil-wor
 - workflow prompts for planning, implementation, review, simplification, explanation, handoff, and task completion;
 - skills for isolated Git worktree setup and local Pi usage audits;
 - a modal Vim editor extension;
+- a subagent extension: blocking single, parallel and chain dispatch, plus background runs (`subagent_start`, `subagent_wait`, `subagent_status`, `subagent_cancel`);
 - terminal notifications when an agent run settles;
 - a Gruvbox Dark Hard theme;
 - personal agent instructions and portable settings examples.
@@ -25,7 +26,13 @@ The package system does not install global `AGENTS.md` or extension-specific con
 mkdir -p "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}"
 cp personal-config/AGENTS.md "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/AGENTS.md"
 cp personal-config/vim-mode.json "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/vim-mode.json"
+mkdir -p "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/agents"
+cp personal-config/agents/*.md "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/agents/"
 ```
+
+The subagent extension finds agents in `agents/` under the Pi agent directory, and in `.pi/agents` inside a project when the call sets `agentScope`. `personal-config/agents/` holds `worker` (all tools), `scout` (read-only investigation) and `reviewer` (read-only review). `scout` pins `claude-bridge/claude-sonnet-5-5`, which needs the `pi-claude-bridge` package; change or remove its `model:` line otherwise. The other agents use the dispatching session's model.
+
+Background runs write a readable log per run under `$TMPDIR/pi-subagent-runs/<pid>/`. Quitting or reloading Pi stops them.
 
 `personal-config/settings.example.json` is a portable reference. Merge the desired values into your existing `settings.json`; do not overwrite authentication or machine-local package configuration blindly.
 
@@ -53,4 +60,4 @@ This repository does not include credentials, authentication state, trust decisi
 
 ## License
 
-MIT. `extensions/notify.ts` comes from Pi's MIT-licensed examples; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+MIT. `extensions/notify.ts` comes from Pi's MIT-licensed examples, and `extensions/subagent/` is adapted from them; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).

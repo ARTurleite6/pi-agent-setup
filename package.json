@@ -15,8 +15,12 @@
   },
   "pi": {
     "extensions": [
+      "./extensions/answer.ts",
+      "./extensions/goal.ts",
       "./extensions/notify.ts",
+      "./extensions/review.ts",
       "./extensions/subagent/index.ts",
+      "./extensions/todos.ts",
       "./extensions/vim-mode/index.ts"
     ],
     "skills": [

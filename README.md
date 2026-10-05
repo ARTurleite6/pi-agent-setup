@@ -2,10 +2,11 @@
 
 Reusable configuration for the [Pi coding agent](https://github.com/earendil-works/pi-mono):
 
-- workflow prompts for planning, implementation, review, simplification, explanation, handoff, and task completion;
-- skills for isolated Git worktree setup and local Pi usage audits;
+- workflow prompts for planning, implementation, review, simplification, explanation, handoff, task completion, and Herdr-pane agents;
+- skills: Matt Pocock's engineering and productivity skills (spec, tickets, TDD, code review, domain modeling, grilling, writing), agent-stuff's `commit`, `summarize`, `tmux`, `web-browser` and `native-web-search`, plus isolated Git worktree setup and local Pi usage audits;
 - a modal Vim editor extension;
 - a subagent extension: blocking single, parallel and chain dispatch, plus background runs (`subagent_start`, `subagent_wait`, `subagent_status`, `subagent_cancel`);
+- agent-stuff extensions: `/goal` and goal tools, `/todos` and the `todo` tool, `/review` and `/end-review`, `/answer`;
 - terminal notifications when an agent run settles;
 - a Gruvbox Dark Hard theme;
 - personal agent instructions and portable settings examples.
@@ -17,6 +18,16 @@ pi install git:github.com/ARTurleite6/pi-agent-setup
 ```
 
 The package automatically exposes the extensions, skills, prompts, and theme. Pi packages execute with your user permissions, so review the source before installing or updating.
+
+The `web-browser` skill needs its script dependencies installed once:
+
+```sh
+npm ci --ignore-scripts --prefix <package-dir>/skills/web-browser/scripts
+```
+
+`/answer` and `native-web-search` use `openai-codex/gpt-6-luna`, so they need an OpenAI Codex login.
+
+The extension `/review` takes precedence over `prompts/review.md`.
 
 ## Apply the personal configuration
 
@@ -56,8 +67,8 @@ personal-config/  Files that require explicit copying or merging
 
 ## Intentionally excluded
 
-This repository does not include credentials, authentication state, trust decisions, model caches, sessions, generated audit reports, downloaded binaries, `node_modules`, or machine-managed Herdr integration files. The machine-local `pi-linear` checkout is also excluded; install that integration separately when needed.
+This repository does not include credentials, authentication state, trust decisions, model caches, sessions, generated audit reports, downloaded binaries, `node_modules`, or machine-managed Herdr integration files. The `herdr` skill that `prompts/herdr-agent.md` loads is one of those: write it with `mkdir -p ~/.pi/agent/skills/herdr && herdr --skill > ~/.pi/agent/skills/herdr/SKILL.md`. The machine-local `pi-linear` checkout is also excluded; install that integration separately when needed.
 
 ## License
 
-MIT. `extensions/notify.ts` comes from Pi's MIT-licensed examples, and `extensions/subagent/` is adapted from them; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+MIT for this repository's own files. Third-party files keep their licenses: Pi examples (MIT), Matt Pocock's skills (MIT) and mitsuhiko/agent-stuff (Apache-2.0). See [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) for which files come from where and what was changed, and `licenses/` for the license texts.

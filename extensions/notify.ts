@@ -51,7 +51,10 @@ function notify(title: string, body: string): void {
 export default function (pi: ExtensionAPI) {
 	// `agent_end` fires after each low-level run; Pi may still retry, compact,
 	// or continue with queued follow-ups. Notify only after the full run settles.
-	pi.on("agent_settled", async () => {
+	// Print/JSON runs (including subagents) have no terminal to notify, and the
+	// escape sequence would corrupt their stdout.
+	pi.on("agent_settled", async (_event, ctx) => {
+		if (ctx.mode !== "tui") return;
 		notify("Pi", "Ready for input");
 	});
 }

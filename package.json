@@ -2,7 +2,7 @@
   "name": "artur-pi-agent-setup",
   "version": "0.1.0",
   "private": true,
-  "description": "Reusable Pi coding-agent extensions, skills, prompts, theme, and working preferences",
+  "description": "Reusable Pi coding-agent extensions, skills, prompts, theme, and subagent definitions",
   "keywords": [
     "pi-package",
     "coding-agent",
@@ -20,8 +20,7 @@
       "./extensions/notify.ts",
       "./extensions/review.ts",
       "./extensions/subagent/index.ts",
-      "./extensions/todos.ts",
-      "./extensions/vim-mode/index.ts"
+      "./extensions/todos.ts"
     ],
     "skills": [
       "./skills"

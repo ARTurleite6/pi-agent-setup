@@ -2,14 +2,13 @@
 
 Reusable configuration for the [Pi coding agent](https://github.com/earendil-works/pi-mono):
 
-- workflow prompts for planning, implementation, review, simplification, explanation, handoff, task completion, and Herdr-pane agents;
-- skills: Matt Pocock's engineering and productivity skills (spec, tickets, TDD, code review, domain modeling, grilling, writing), agent-stuff's `commit`, `summarize`, `tmux`, `web-browser` and `native-web-search`, plus isolated Git worktree setup and local Pi usage audits;
-- a modal Vim editor extension;
+- a prompt for running a task in a visible pi agent in a Herdr pane;
+- skills: Matt Pocock's engineering and productivity skills (spec, tickets, TDD, code review, domain modeling, grilling, writing), and agent-stuff's `commit`, `summarize`, `tmux`, `web-browser` and `native-web-search`;
 - a subagent extension: blocking single, parallel and chain dispatch, plus background runs (`subagent_start`, `subagent_wait`, `subagent_status`, `subagent_cancel`);
 - agent-stuff extensions: `/goal` and goal tools, `/todos` and the `todo` tool, `/review` and `/end-review`, `/answer`;
 - terminal notifications when an agent run settles;
 - a Gruvbox Dark Hard theme;
-- personal agent instructions and portable settings examples.
+- subagent definitions and a portable settings example.
 
 ## Install as a Pi package
 
@@ -27,16 +26,11 @@ npm ci --ignore-scripts --prefix <package-dir>/skills/web-browser/scripts
 
 `/answer` and `native-web-search` use `openai-codex/gpt-6-luna`, so they need an OpenAI Codex login.
 
-The extension `/review` takes precedence over `prompts/review.md`.
-
 ## Apply the personal configuration
 
-The package system does not install global `AGENTS.md` or extension-specific configuration files. Copy them explicitly if wanted:
+The package system does not install subagent definitions. Copy them explicitly if wanted:
 
 ```sh
-mkdir -p "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}"
-cp personal-config/AGENTS.md "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/AGENTS.md"
-cp personal-config/vim-mode.json "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/vim-mode.json"
 mkdir -p "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/agents"
 cp personal-config/agents/*.md "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}/agents/"
 ```
